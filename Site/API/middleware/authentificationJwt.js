@@ -20,4 +20,4 @@ app.get('/jwt', (req, res) => {
     } else {
       res.status(500).json({ error: 'Erreur lors de la création du token' });
     }
-});
+})

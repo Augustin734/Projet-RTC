@@ -6,14 +6,11 @@ import {
     deletePeopleByIdService
 } from "../Models/PeopleModel.js";
 
-// Standardized repsonse function
 const handleResponse = (res, status, message, data = null) => {
     res.status(status).json({
         status, message, data
     });
 };
-
-// Every CRUD controlled response
 
 export const getAllPeople = async (req, res, next) => {
     try {
@@ -44,8 +41,6 @@ export const createPeople = async (req, res, next) => {
             phone_number,
             mail,
             password,
-            adress,
-            city
         );
         handleResponse(res, 201, "People created successfully", newPeople);
     } catch (error) {
@@ -65,8 +60,6 @@ export const updatePeople = async (req, res, next) => {
             phone_number,
             mail,
             password,
-            adress,
-            city
         );
         if(!updatedPeople) return handleResponse(res, 404, "People not found")
         handleResponse(res, 200, "People updated successfully", updatedPeople)

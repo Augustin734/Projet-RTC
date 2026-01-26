@@ -23,8 +23,8 @@ export const createPeopleService = async (
   city
 ) => {
   const result = await pool.query(
-    `INSERT INTO People (name, first_name, phone_number, mail, password, adress, city)
-     VALUES ($1, $2, $3, $4, $5, $6, $7)
+    `INSERT INTO People (name, first_name, phone_number, mail, password)
+     VALUES ($1, $2, $3, $4, $5)
      RETURNING *`,
     [name, first_name, phone_number, mail, password, adress, city]
   );
@@ -38,8 +38,6 @@ export const updatePeopleByIdService = async (
   phone_number,
   mail,
   password,
-  adress,
-  city
 ) => {
   const result = await pool.query(
     `UPDATE People
@@ -48,11 +46,9 @@ export const updatePeopleByIdService = async (
          phone_number = $4,
          mail = $5,
          password = $6,
-         adress = $7,
-         city = $8
      WHERE id = $1
      RETURNING *`,
-    [id, name, first_name, phone_number, mail, password, adress, city]
+    [id, name, first_name, phone_number, mail, password]
   );
   return result.rows[0];
 };
