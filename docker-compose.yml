@@ -1,15 +1,22 @@
 services:
   db:
-    build: ./DataBase
+    image: postgres:16
     container_name: DataBase
-    ports:
-      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./DataBase/:/docker-entrypoint-initdb.d/
+    ports:
+      - "${DB_PORT}:5432"
     networks:
       - devnet
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U devuser -d devdb"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -18,18 +25,13 @@ services:
   back:
     build: ./Site
     container_name: Site
+    env_file:
+      - .env
     depends_on:
       db:
         condition: service_healthy
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USER: devuser
-      DB_PASSWORD: devpass
-      DB_NAME: devdb
-      PORT: 3000
     ports:
-      - "3000:3000"
+      - "${PORT}:3000"
     volumes:
       - ./Site:/app        
       - /app/node_modules 
@@ -38,8 +40,13 @@ services:
     command: ["nodemon", "--legacy-watch", "index.js"] 
 
   pgadmin:
-    build: ./Graphical_Interface
+    image: dpage/pgadmin4
     container_name: Graphical_Interface
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
     depends_on:
       db:
         condition: service_healthy
@@ -53,3 +60,4 @@ volumes:
 
 networks:
   devnet:
+    driver: bridge
