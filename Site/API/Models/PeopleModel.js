@@ -1,4 +1,5 @@
 import pool from "../Config/DataBase.js";
+import bcrypt from "bcrypt";
 
 export const getAllPeopleService = async () => {
   const result = await pool.query("SELECT * FROM People");
@@ -13,6 +14,14 @@ export const getPeopleByIdService = async (id) => {
   return result.rows[0];
 };
 
+export const getPeopleByMailService = async (mail) => {
+  const result = await pool.query(
+    "SELECT * FROM People WHERE mail = $1",
+    [mail]
+  );
+  return result.rows[0];
+};
+
 export const createPeopleService = async (
   name,
   first_name,
@@ -20,6 +29,8 @@ export const createPeopleService = async (
   mail,
   password,
 ) => {
+  const hashedPassword = await bcrypt.hash(password, 10);
+
   const result = await pool.query(
     `INSERT INTO People (name, first_name, phone_number, mail, password)
      VALUES ($1, $2, $3, $4, $5)

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import some_error from './API/middleware/Error.js';
 import pool from './API/Config/DataBase.js';
 import People from './API/Routes/People.js';
+import authRoutes from "./API/Routes/Auth.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,6 +13,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = 3000;
 
+app.use("/auth", authRoutes);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
