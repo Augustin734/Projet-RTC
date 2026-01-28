@@ -8,9 +8,11 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "pg": "^8.11.5",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
-    "joi": "^17.9.2"
+    "express": "^4.19.2",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.11.5"
   }
 }
