@@ -1,54 +1,131 @@
-import React, { useState } from "react";
-import "../style/inscription.css"; 
+'use client';
 
-const Inscription = () => {
-  const [view, setView] = useState("login"); 
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import '../style/signup.css';
+
+export default function SignUpPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    first_name: '',
+    phone_number: '',
+    mail: '',
+    password: ''
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/User", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Connexion réussie !");
+        window.location.replace("/jb");
+      } else {
+        alert("Erreur : " + data.message);
+      }
+    } catch (error) {
+      alert("Erreur de connexion au serveur !");
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <div className="box">
-      <div className="login">
-        <div className="loginBx">
-          {view === "login" && (
-            <>
-              <h2><i className="fa-solid fa-right-to-bracket"></i> Login</h2>
-              <input type="text" placeholder="Username" />
-              <input type="password" placeholder="Password" />
-              <input type="submit" value="Sign in" />
-              <div className="group">
-                <a href="#" onClick={() => setView("forgot")}>Forgot Password</a>
-                <a href="#" onClick={() => setView("signup")}>Sign up</a>
-              </div>
-            </>
-          )}
+    <div className="signup-container">
+      <Link href="/connexion" className="formation-link back-link">
+        Back
+      </Link>
+      
 
-          {view === "signup" && (
-            <>
-              <h2><i className="fa-solid fa-user-plus"></i> Sign Up</h2>
-              <input type="text" placeholder="Username" />
-              <input type="email" placeholder="Email" />
-              <input type="password" placeholder="Password" />
-              <input type="password" placeholder="Confirm Password" />
-              <input type="submit" value="Sign Up" />
-              <div className="group">
-                <a href="#" onClick={() => setView("login")}>Login</a>
-              </div>
-            </>
-          )}
 
-          {view === "forgot" && (
-            <>
-              <h2><i className="fa-solid fa-key"></i> Forgot Password</h2>
-              <input type="email" placeholder="Enter your email" />
-              <input type="submit" value="Reset Password" />
-              <div className="group">
-                <a href="#" onClick={() => setView("login")}>Login</a>
-              </div>
-            </>
-          )}
-        </div>
+      <div className="employer-section">
+        <h1>Sign Up</h1>
+        <label className="fonction-label">Fonction:</label>
+
+        <form id="formAnnonce" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="name">Name:</label>
+            <input 
+              id="name" 
+              type="text" 
+              value={formData.name}
+              onChange={handleChange}
+              required 
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="first_name">First-Name:</label>
+            <input 
+              id="first_name" 
+              type="text" 
+              value={formData.first_name}
+              onChange={handleChange}
+              required 
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="phone_number">Phone:</label>
+            <input 
+              id="phone_number" 
+              type="text" 
+              value={formData.phone_number}
+              onChange={handleChange}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="mail">Email:</label>
+            <input 
+              id="mail" 
+              type="email" 
+              value={formData.mail}
+              onChange={handleChange}
+              required 
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input 
+              id="password" 
+              type="password" 
+              value={formData.password}
+              onChange={handleChange}
+              required 
+            />
+          </div>
+
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? 'Submitting...' : 'Submit'}
+          </button>
+        </form>
       </div>
+
+      <Link href="/advertisements-board" className="formation-link home-link">
+        Back to Home Page
+      </Link>
     </div>
   );
-};
-
-export default Inscription;
+}
