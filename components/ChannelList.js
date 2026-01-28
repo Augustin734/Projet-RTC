@@ -1,26 +1,51 @@
-export function ChannelList() {
+export default function ChannelList({ onChannelSelect }) {
+  const channels = [
+    { id: 1, name: "Général" },
+    { id: 2, name: "Amis" },
+    { id: 3, name: "Messages privés" },
+  ];
+
   return (
-    <div className="w-60 bg-gray-800 text-gray-300 flex flex-col">
-      {/* En-tête */}
-      <div className="p-4 font-bold text-white border-b border-gray-700">
-        Amis
-      </div>
-
-      {/* Liste des amis en ligne */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="flex items-center p-2 rounded hover:bg-gray-700">
-          <div className="w-8 h-8 rounded-full bg-gray-600 mr-2"></div>
-          <span>Nitro</span>
-          <span className="ml-auto text-xs text-green-500">OFFRE</span>
+    <div style={styles.container}>
+      <div style={styles.header}>Amis</div>
+      {channels.map((channel) => (
+        <div
+          key={channel.id}
+          style={styles.channelItem}
+          onClick={() => onChannelSelect(channel)}
+        >
+          <div style={styles.avatar} />
+          <span>{channel.name}</span>
         </div>
-        {/* Ajoute d'autres amis ici */}
-      </div>
-
-      {/* Messages privés */}
-      <div className="p-4 font-bold text-white border-t border-gray-700">
-        Messages privés
-      </div>
-      {/* Ajoute des messages privés ici */}
+      ))}
     </div>
   );
 }
+
+const styles = {
+  container: {
+    width: '240px',
+    backgroundColor: '#2f3136',
+    color: '#dcddde',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  header: {
+    padding: '12px',
+    fontWeight: 'bold',
+    borderBottom: '1px solid #202225',
+  },
+  channelItem: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '8px 12px',
+    cursor: 'pointer',
+  },
+  avatar: {
+    width: '32px',
+    height: '32px',
+    borderRadius: '50%',
+    backgroundColor: '#36393f',
+    marginRight: '8px',
+  },
+};
