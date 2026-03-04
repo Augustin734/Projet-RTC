@@ -56,6 +56,18 @@ export const getAllChannelByServerIdService = async (serverId) => {
   return result.rows;
 };
 
+export const getUserRoleInServerService = async (serverId, userId) => {
+  const result = await pool.query(
+    `SELECT role
+     FROM users_servers
+     WHERE server_id = $1 AND user_id = $2`,
+    [serverId, userId]
+  );
+
+  if (result.rows.length === 0) return null;
+
+  return result.rows[0];
+};
 
 // DELETE
 export const deleteUserFromServerService = async (userID, serverID) => {

@@ -15,6 +15,7 @@ import {
   updateMemberRole
 } from "../Controllers/ServerControllers.js";
 import { authenticate } from "../middleware/authentificationJwt.js";
+import { checkRole } from "../middleware/CheckRole.js";
 
 const router = express.Router();
 
@@ -113,8 +114,9 @@ router.get ("/:id/inviteCode", authenticate, getServerInviteCode);
 
 
 // DELETE
-router.delete ("/:serverId", authenticate, deleteServerById);
-router.delete ("/:serverId/leave", authenticate, deleteUserFromServer);
+router.delete ("/:serverId", authenticate, checkRole(["owner"]), deleteServerById);
+
+router.delete ("/:serverId/leave", authenticate, checkRole(["owner", "admin"]), deleteUserFromServer);
 
 
 // POST
@@ -177,12 +179,13 @@ router.post ("/", authenticate, createServer);
  *               type: object
  */
 router.post ("/join", authenticate, joinServerWithInviteCode);
-router.post ("/:serverId/channels", authenticate, createChannelByServerId);
+
+router.post ("/:serverId/channels", authenticate, checkRole(["owner", "admin"]), createChannelByServerId);
 
 
 // PUT
-router.put ("/:serverId", authenticate, updateServer);
+router.put ("/:serverId", authenticate, checkRole(["owner"]), updateServer);
 
-router.put ("/:serverId/members/:userId", authenticate, updateMemberRole);
+router.put ("/:serverId/members/:userId", authenticate, checkRole(["owner"]), updateMemberRole);
 
 export default router ;
