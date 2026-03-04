@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import some_error from './middleware/Error.js';
-import User from './Routes/User.js';
-import authRoutes from './Routes/Auth.js';
+import authRoutes from './Routes/Authentication.js';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
 import pool from './Config/DataBase.js';
 import jwt from 'jsonwebtoken';
 import Servers from './Routes/Server.js';
+import Channels from './Routes/Channel.js';
 import setupSwagger from './Config/swagger.js';
 
 const app = express();
@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/auth', authRoutes);
-app.use('/api', User);
-app.use('/api/servers', Servers);
+app.use('/servers', Servers);
+app.use ('/channels', Channels)
 
 setupSwagger(app);
 

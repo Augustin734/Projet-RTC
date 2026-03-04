@@ -7,11 +7,11 @@ import {
     getAllMembersByServerService,
     deleteUserFromServerService,
     createChannelByServerIdService,
-    getAllChannelByServerIdService,
-    getChannelByIdService,
     deleteServerByIdService,
-    deleteChannelByIdService,
-    getAllUsersByServerService
+    getAllChannelByServerIdService,
+    getAllUsersByServerService,
+    updateMemberRoleService,
+    updateServerService
 } from "../Models/ServerModel.js";
 import { randomBytes } from 'node:crypto';
 
@@ -53,7 +53,6 @@ export const joinServerWithInviteCode = async (req, res, next) => {
   }
 };
 
-
 export const getAllMembersByServer = async (req, res, next) => {
   try {
     const userId = req.user?.id;
@@ -66,7 +65,6 @@ export const getAllMembersByServer = async (req, res, next) => {
     next(error);
   }
 };
-
 
 export const getServerInviteCode = async (req, res, next) => {
   try {
@@ -86,7 +84,6 @@ export const getServerInviteCode = async (req, res, next) => {
   }
 };
 
-
 export const getServer = async (req, res, next) => {
     try {
         const Server = await getServerByIdService(req.params.id);
@@ -95,36 +92,6 @@ export const getServer = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-};
-
-
-export const getAllChannelByServerId = async (req, res, next) => {
-  try {
-    const { serverId } = req.params;
-    
-    const AllChannel = await getAllChannelByServerIdService(serverId);
-    
-    if(!AllChannel)
-      return handleResponse(res, 404, "Cannot get all channels");
-    handleResponse(res, 200, "Get all channels successfully", AllChannel);
-  } catch (error) {
-    next(error);
-  }
-};
-
-export const getChannelById = async (req, res, next) => {
-  try {
-    const { channelId } = req.params;
-    
-    const channel = await getChannelByIdService(channelId);
-    
-    if (!channel)
-      return handleResponse(res, 404, "Channel not found");
-    
-    handleResponse(res, 200, "Channel fetched successfully", channel);
-  } catch (error) {
-    next(error);
-  }
 };
 
 export const getAllUsersByServer = async (req, res, next) => {
@@ -141,6 +108,21 @@ export const getAllUsersByServer = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getAllChannelByServerId = async (req, res, next) => {
+  try {
+    const { serverId } = req.params;
+    
+    const AllChannel = await getAllChannelByServerIdService(serverId);
+    
+    if(!AllChannel || AllChannel.length === 0)
+      return handleResponse(res, 404, "Cannot get all channels");
+    handleResponse(res, 200, "Get all channels successfully", AllChannel);
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 // DELETE
 export const deleteUserFromServer = async (req, res, next) => {
@@ -174,20 +156,6 @@ export const deleteServerById = async (req, res, next) => {
   }
 };
 
-export const deleteChannelById = async (req, res, next) => {
-  try {
-    const { channelId } = req.params;
-
-    const deletedChannel = await deleteChannelByIdService(channelId);
-
-    if (!deletedChannel)
-      return handleResponse(res, 404, "Cannot delete channel");
-
-    handleResponse(res, 200, "Channel deleted successfully");
-  } catch (error) {
-    next(error);
-  }
-};
 
 // CREATE
 export const createServer = async (req, res, next) => {
@@ -223,6 +191,43 @@ export const createChannelByServerId = async (req, res, next) => {
       return handleResponse(res, 404, "Cannot create a new channel");
     
     handleResponse(res, 200, "Channel created successfully", createdChannel);
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+// PUT
+export const updateServer = async (req, res, next) => {
+  try{
+    const { serverId } = req.params;
+    const { name } = req.body;
+
+    const updateServer = await updateServerService(serverId, name);
+
+    if(!updateServer)
+      return handleResponse(res, 404, "Cannot update server");
+
+    handleResponse(res, 200, "Server updated successfully", updateServer);
+  } catch (error) {
+    next (error);
+  }
+}
+
+export const updateMemberRole = async (req, res, next) => {
+  try {
+    const { serverId, userId } = req.params;
+    const { role } = req.body;
+
+    if (!role)
+      return handleResponse(res, 400, "Role is required");
+
+    const updatedMember = await updateMemberRoleService(serverId, userId, role);
+
+    if (!updatedMember)
+      return handleResponse(res, 404, "Cannot update the member's role");
+
+    handleResponse(res, 200, "Member's role updated successfully", updatedMember);
   } catch (error) {
     next(error);
   }

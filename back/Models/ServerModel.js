@@ -33,29 +33,6 @@ export const getAllMembersByServerService = async (userId) => {
   return result.rows;
 };
 
-
-export const getAllChannelByServerIdService = async (serverId) => {
-  const result = await pool.query(
-    `SELECT *
-    FROM channels
-    WHERE server_id = $1`,
-    [serverId]
-  );
-  
-  return result.rows;
-};
-
-export const getChannelByIdService = async (channelId) => {
-  const result = await pool.query(
-    `SELECT *
-    FROM channels
-    WHERE id = $1`,
-    [channelId]
-  );
-  
-  return result.rows[0];
-};
-
 export const getAllUsersByServerService = async (serverId) => {
   const result = await pool.query(
     `SELECT u.name
@@ -68,8 +45,19 @@ export const getAllUsersByServerService = async (serverId) => {
   return result.rows;
 };
 
-// DELETE
+export const getAllChannelByServerIdService = async (serverId) => {
+  const result = await pool.query(
+    `SELECT *
+    FROM channels
+    WHERE server_id = $1`,
+    [serverId]
+  );
+  
+  return result.rows;
+};
 
+
+// DELETE
 export const deleteUserFromServerService = async (userID, serverID) => {
   const result = await pool.query(
     `DELETE FROM users_servers
@@ -88,18 +76,7 @@ export const deleteServerByIdService = async (serverID) => {
   return result.rowCount;
 };
 
-export const deleteChannelByIdService = async (channelID) => {
-  const result = await pool.query(
-    `DELETE FROM channels
-    WHERE id = $1`,
-    [channelID]
-  );
-  return result.rowCount;
-};
-
-
 // CREATE
-
 export const createServerService = async (
   name,
   ownerId,
@@ -114,8 +91,8 @@ export const createServerService = async (
   const newServer = result.rows[0];
   
   await pool.query(
-    `INSERT INTO users_servers (user_id, server_id)
-    VALUES ($1, $2)`,
+    `INSERT INTO users_servers (user_id, server_id, role)
+    VALUES ($1, $2,'owner')`,
     [ownerId, newServer.id]
   );
   
@@ -141,5 +118,30 @@ export const addUserToServerService = async (userId, serverId) => {
      `,
     [userId, serverId]
   );
+  return result.rows[0];
+};
+
+// PUT
+export const updateMemberRoleService = async (serverId, userId, role) => {
+  const result = await pool.query(
+    `UPDATE users_servers
+     SET role = $1
+     WHERE server_id = $2 AND user_id = $3
+     RETURNING *`,
+    [role, serverId, userId]
+  );
+
+  return result.rows[0];
+};
+
+export const updateServerService = async (serverId, name) => {
+  const result = await pool.query(
+    `UPDATE servers
+     SET name = $1
+     WHERE id = $2
+     RETURNING *`,
+    [name, serverId]
+  );
+
   return result.rows[0];
 };

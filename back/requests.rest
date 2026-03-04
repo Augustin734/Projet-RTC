@@ -1,85 +1,152 @@
-GET http://localhost:3001/api/User
+### Authentication.js
 
-###
-
-POST http://localhost:3001/api/User
-Content-type: application/json
-
-{
-    "name": "Augustin",
-    "first_name": "Augustin",
-    "phone_number": "Augustin",
-    "mail": "Augustin",
-    "password": "Augustin"
-}
-
-###
-
-POST http://localhost:3001/auth/login
-Content-type: application/json
-
-{
-    "email": "a",
-    "password": "a"
-}
-
-###
-
-GET http://localhost:3001/api/servers
-
-
-###
-
-POST http://localhost:3001/api/servers
-Content-type: application/json
-
-{
-    "name": "Augustin3"
-}
-
-###
-
-GET http://localhost:3001/api/servers/1/inviteCode
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUiLCJtYWlsIjoiQXVndXN0aW4iLCJuYW1lIjoiQXVndXN0aW4iLCJpYXQiOjE3NzAzMTY3ODIsImV4cCI6MTc3MDMyMDM4Mn0.2zGuvMsHEaWb0Z_0lrHN6efu8luz3e1D4CkUelWAYQI
-
-###
-
-GET http://localhost:3001/api/servers/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiYSIsIm5hbWUiOiJhIiwiaWF0IjoxNzcwMzM1ODU4LCJleHAiOjE3NzAzNTc0NTh9.Ql-mouuATIynyreUctjV3cAkHw95zGgn352_E2KbbKM
-
-###
-
-POST http://localhost:3001/api/servers/join
+### POST CREATE USER SERVICE
+POST http://localhost:3001/auth/signup
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUiLCJtYWlsIjoiQXVndXN0aW4iLCJuYW1lIjoiQXVndXN0aW4iLCJpYXQiOjE3NzAzMTY3ODIsImV4cCI6MTc3MDMyMDM4Mn0.2zGuvMsHEaWb0Z_0lrHN6efu8luz3e1D4CkUelWAYQI
 
 {
-  "inviteCode": "86a89589f0a3048f8ab5d2288bafcff8"
+  "name": "Dupont",
+  "first_name": "Jeane",
+  "phone_number": "0612345678",
+  "mail": "jeane.dupont@test.com",
+  "password": "Password123!"
 }
 
-###
-
-GET http://localhost:3001/api/servers/members
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiQXVndXN0aW4iLCJuYW1lIjoiQXVndXN0aW4iLCJpYXQiOjE3NzAzMDU3MjYsImV4cCI6MTc3MDMwOTMyNn0.WloPoau6Y_BoicSkeFCxhoP60T4Kgv8HaOxDVmUYOB8
-
-
-###
-DELETE http://localhost:3001/api/servers/1/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiQXVndXN0aW4iLCJuYW1lIjoiQXVndXN0aW4iLCJpYXQiOjE3NzAzMDUyMjMsImV4cCI6MTc3MDMwODgyM30.F3_fsesZ14iznH2kesW6KVatsaEX6AVRDwaCw45tzCI
-
-###
-POST http://localhost:3001/api/servers/1/channels
-Content-type: application/json
+### GET USER BY MAIL SERVICE
+POST http://localhost:3001/auth/login
+Content-Type: application/json
 
 {
-    "name": "Augustin3"
+    "mail": "jeane.dupont@test.com",
+    "password": "Password123!"
 }
 
-###
-GET http://localhost:3001/api/servers/2/channels
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiYSIsIm5hbWUiOiJhIiwiaWF0IjoxNzcwMzM1ODU4LCJleHAiOjE3NzAzNTc0NTh9.Ql-mouuATIynyreUctjV3cAkHw95zGgn352_E2KbbKM
+### GET USER BY ID SERVICE
+GET http://localhost:3001/auth/1
 
 
-###
-GET http://localhost:3001/api/servers/channel/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiQXVndXN0aW4iLCJuYW1lIjoiQXVndXN0aW4iLCJpYXQiOjE3NzAzMDUyMjMsImV4cCI6MTc3MDMwODgyM30.F3_fsesZ14iznH2kesW6KVatsaEX6AVRDwaCw45tzCI
+
+
+### Server.js
+#################################################
+### CREATE SERVER
+#################################################
+
+POST http://localhost:3001/servers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+Content-Type: application/json
+
+{
+  "name": "Mon serveur test"
+}
+
+#################################################
+### GET ALL SERVERS
+#################################################
+
+GET http://localhost:3001/servers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+
+
+#################################################
+### GET SERVER BY ID
+#################################################
+
+GET http://localhost:3001/servers/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+
+
+#################################################
+### GET SERVER INVITE CODE
+#################################################
+
+GET http://localhost:3001/servers/1/inviteCode
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+
+
+#################################################
+### JOIN SERVER WITH INVITE CODE
+#################################################
+
+POST http://localhost:3001/servers/join
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJtYWlsIjoiamVhbmUuZHVwb250QHRlc3QuY29tIiwibmFtZSI6IkR1cG9udCIsImlhdCI6MTc3MjYyMTM1NSwiZXhwIjoxNzcyNjQyOTU1fQ.ZqoDEAOWgkubN7JtzerRmIr5p-FxGjKEqKA4CsRkmGk
+Content-Type: application/json
+
+{
+  "inviteCode": "80d5cc63a092"
+}
+
+#################################################
+### GET ALL SERVERS WHERE USER IS MEMBER
+#################################################
+
+GET http://localhost:3001/servers/members
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+
+
+#################################################
+### GET ALL USERS IN A SERVER
+#################################################
+
+GET http://localhost:3001/servers/1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+
+
+#################################################
+### GET ALL CHANNELS IN A SERVER
+#################################################
+
+GET http://localhost:3001/servers/1/channels
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+
+
+#################################################
+### CREATE CHANNEL IN SERVER
+#################################################
+
+POST http://localhost:3001/servers/1/channels
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+Content-Type: application/json
+
+{
+  "name": "general"
+}
+
+#################################################
+### UPDATE SERVER NAME
+#################################################
+
+PUT http://localhost:3001/servers/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+Content-Type: application/json
+
+{
+  "name": "Serveur renommé"
+}
+
+#################################################
+### UPDATE MEMBER ROLE
+#################################################
+
+PUT http://localhost:3001/servers/1/members/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+Content-Type: application/json
+
+{
+  "role": "admin"
+}
+
+#################################################
+### LEAVE SERVER (user courant)
+#################################################
+
+DELETE http://localhost:3001/servers/1/leave
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8
+
+
+#################################################
+### DELETE SERVER
+#################################################
+
+DELETE http://localhost:3001/servers/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJtYWlsIjoiamVhbi5kdXBvbnRAdGVzdC5jb20iLCJuYW1lIjoiRHVwb250IiwiaWF0IjoxNzcyNjIxMDAxLCJleHAiOjE3NzI2NDI2MDF9.tmYHz4tSFG9pJH1v7Bss2gmYxbPpKb2A0nyLNEXCHA8

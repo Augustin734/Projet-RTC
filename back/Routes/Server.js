@@ -1,8 +1,6 @@
 import express from "express";
 import { 
-  deleteChannelById, 
   deleteServerById, 
-  getAllChannelByServerId, 
   createChannelByServerId, 
   deleteUserFromServer, 
   createServer, 
@@ -11,16 +9,20 @@ import {
   getServerInviteCode, 
   joinServerWithInviteCode, 
   getAllMembersByServer, 
-  getChannelById,
-  getAllUsersByServer
-} from "../Controllers/ServerController.js";
+  getAllChannelByServerId,
+  getAllUsersByServer,
+  updateServer,
+  updateMemberRole
+} from "../Controllers/ServerControllers.js";
 import { authenticate } from "../middleware/authentificationJwt.js";
 
 const router = express.Router();
 
+
+// GET
 /**
  * @swagger
- * /api/servers/:
+ * /api/:
  *   get:
  *     summary: Récupérer tous les serveurs
  *     tags: [Servers]
@@ -38,7 +40,7 @@ router.get ("/",authenticate, getAllServer);
 
 /**
  * @swagger
- * /api/servers/members:
+ * /api/members:
  *   get:
  *     summary: Récupérer tous les membres d'un serveur
  *     tags: [Servers]
@@ -55,11 +57,10 @@ router.get ("/",authenticate, getAllServer);
  *                 type: object
  */
 router.get ("/members", authenticate, getAllMembersByServer);
-router.get ("/channel/:channelId", authenticate, getChannelById)
 
 /**
  * @swagger
- * /api/servers/{id}:
+ * /api/{id}:
  *   get:
  *     summary: Récupérer un serveur par son ID
  *     tags: [Servers]
@@ -79,12 +80,14 @@ router.get ("/channel/:channelId", authenticate, getChannelById)
  *               type: object
  */
 router.get ("/:id", authenticate, getServer);
-router.get ("/:serverId/channels", authenticate, getAllChannelByServerId);
+
 router.get("/:serverId/users", authenticate, getAllUsersByServer);
+
+router.get ("/:serverId/channels", authenticate, getAllChannelByServerId);
 
 /**
  * @swagger
- * /api/servers/{id}/inviteCode:
+ * /api/{id}/inviteCode:
  *   get:
  *     summary: Récupérer le code d'invitation d'un serveur
  *     tags: [Servers]
@@ -108,13 +111,16 @@ router.get("/:serverId/users", authenticate, getAllUsersByServer);
  */
 router.get ("/:id/inviteCode", authenticate, getServerInviteCode);
 
-router.delete ("/:serverId/server", authenticate, deleteServerById);
-router.delete ("/:serverId", authenticate, deleteUserFromServer);
-router.delete ("/channel/:channelId", authenticate, deleteChannelById);
 
+// DELETE
+router.delete ("/:serverId", authenticate, deleteServerById);
+router.delete ("/:serverId/leave", authenticate, deleteUserFromServer);
+
+
+// POST
 /**
  * @swagger
- * /api/servers/:
+ * /api/:
  *   post:
  *     summary: Créer un nouveau serveur
  *     tags: [Servers]
@@ -144,7 +150,7 @@ router.post ("/", authenticate, createServer);
 
 /**
  * @swagger
- * /api/servers/join:
+ * /api/join:
  *   post:
  *     summary: Rejoindre un serveur avec un code d'invitation
  *     tags: [Servers]
@@ -172,5 +178,11 @@ router.post ("/", authenticate, createServer);
  */
 router.post ("/join", authenticate, joinServerWithInviteCode);
 router.post ("/:serverId/channels", authenticate, createChannelByServerId);
+
+
+// PUT
+router.put ("/:serverId", authenticate, updateServer);
+
+router.put ("/:serverId/members/:userId", authenticate, updateMemberRole);
 
 export default router ;

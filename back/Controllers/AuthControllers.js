@@ -1,16 +1,44 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { getUserByMailService } from "../Models/UserModel.js";
+import { getUserByMailService, getUserByIdService, createUserService } from "../Models/AuthModel.js";
+
+const handleResponse = (res, status, message, data = null) => {
+    res.status(status).json({
+        status, message, data
+    });
+};
+
+export const createUser = async (req, res, next) => {
+  try {
+    
+    const {name, first_name, phone_number, mail, password} = req.body;
+    const saltRounds = 12;
+    const hashedPassword = await bcrypt.hash(password, saltRounds)
+    
+    const newUser = await createUserService(
+      name,
+      first_name,
+      phone_number,
+      mail,
+      hashedPassword,
+    );
+    
+    handleResponse(res, 201, "User created successfully", newUser);
+    
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { mail, password } = req.body;
 
-    if (!email || !password) {
+    if (!mail || !password) {
       return res.status(400).json({ message: "Champs manquants" });
     }
 
-    const user = await getUserByMailService(email);
+    const user = await getUserByMailService(mail);
 
     if (!user) {
       return res.status(401).json({ message: "Utilisateur non trouvé" });
@@ -45,3 +73,12 @@ export const login = async (req, res) => {
   }
 };
 
+export const getUser = async (req, res, next) => {
+  try {
+    const User = await getUserByIdService(req.user.id);
+    if(!User) return handleResponse(res, 404, "User not found")
+      handleResponse(res, 200, "User fetched successfully", User)
+  } catch (error) {
+    next(error);
+  }
+};
