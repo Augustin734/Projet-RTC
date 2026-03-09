@@ -1,0 +1,145 @@
+/* [project]/styles/channel.css [app-client] (css) */
+.chat-app {
+  color: #fff;
+  background-color: #1a1a1a;
+  max-width: 900px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.chat-app .header {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px;
+  display: flex;
+}
+
+.chat-app .header h1 {
+  color: #38bdf8;
+  font-size: 22px;
+}
+
+.chat-app .header button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #dc2626;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.chat-app .actions {
+  margin-bottom: 15px;
+}
+
+.chat-app .actions button {
+  color: #1a1a1a;
+  cursor: pointer;
+  background-color: #f59e0b;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+}
+
+.chat-app .users {
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.chat-app .typing {
+  color: #38bdf8;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.chat-app .messages {
+  background: none;
+  border-radius: 0;
+  height: 400px;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  overflow-y: auto;
+}
+
+.chat-app .messages ul {
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.chat-app .messages li {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.chat-app .message {
+  max-width: 70%;
+}
+
+.chat-app .author {
+  color: #38bdf8;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.chat-app .content {
+  background-color: #374151;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.chat-app .system {
+  color: #9ca3af;
+  text-align: center;
+  background-color: #1f2933;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 13px;
+}
+
+.chat-app form {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  gap: 10px;
+  padding: 15px;
+  display: flex;
+}
+
+.chat-app form input {
+  color: #fff;
+  background-color: #1a1a1a;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  flex: 1;
+  padding: 10px;
+}
+
+.chat-app form button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #10b981;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+}
+
+/*# sourceMappingURL=styles_channel_a0253165.css.map*/

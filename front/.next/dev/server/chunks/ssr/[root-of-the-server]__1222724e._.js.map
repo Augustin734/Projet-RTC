@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///app/app/page.tsx"],"sourcesContent":["import Image from 'next/image';\n\nexport default function HomePage() {\n  return (\n    <div>\n      <h2>Bienvenue sur ChatFlow</h2>\n      <div className=\"flex justify-center items-center mt-8\">\n        <Image \n          src=\"/logo.png\" \n          alt=\"ChatFlow Logo\" \n          width={400} \n          height={400}\n          className=\"object-contain\"\n          priority\n        />\n      </div>\n    </div>\n  );\n}"],"names":[],"mappings":";;;;;AAAA;;;AAEe,SAAS;IACtB,qBACE,8OAAC;;0BACC,8OAAC;0BAAG;;;;;;0BACJ,8OAAC;gBAAI,WAAU;0BACb,cAAA,8OAAC,wIAAK;oBACJ,KAAI;oBACJ,KAAI;oBACJ,OAAO;oBACP,QAAQ;oBACR,WAAU;oBACV,QAAQ;;;;;;;;;;;;;;;;;AAKlB"}}]
+}

@@ -1,0 +1,80 @@
+[00:00:02.650] Server  LOG     ✓ Ready in 1954ms
+[00:01:09.744] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:09.927] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="/layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="fr">
+                          <body
+-                           cz-shortcut-listen="true"
+                          >
+                  ...
+
+[00:01:09.928] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:17.505] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:17.632] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:23.962] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:24.083] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:27.488] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:27.630] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:30.501] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:30.630] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:38.997] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:39.137] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:41.014] Browser ERROR   A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://react.dev/link/controlled-components
+[00:01:46.820] Browser LOG     TOKEN SAUVÉ: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI0OTBjNTM3LWYyOGUtNDMxMi05MzQ5LTgzODdhM2Q5OTk5YiIsIm1haWwiOiJhIiwibmFtZSI6ImEiLCJpYXQiOjE3NzMwNDc5NjksImV4cCI6MTc3MzA2OTU2OX0.h92MzoB_KnrzembZ7_KMF-amDAMwfS1okVFpPIDWnQA
+[00:01:47.094] Browser LOG     Serveurs récupérés : [{"id":"f0cbb71a-20e7-4ce2-bd43-370f7891a58e","invitecode":"ba75a8ab20c0","name":"travail","owner":"2490c537-f28e-4312-9349-8387a3d9999b"},{"id":"8ce7978a-2f58-4b6d-b514-17e7897d9640","invitecode":"a0ee9bd4bc42","name":"jeux","owner":"2490c537-f28e-4312-9349-8387a3d9999b"}]
+[00:01:47.094] Browser LOG     Serveurs récupérés : [{"id":"f0cbb71a-20e7-4ce2-bd43-370f7891a58e","invitecode":"ba75a8ab20c0","name":"travail","owner":"2490c537-f28e-4312-9349-8387a3d9999b"},{"id":"8ce7978a-2f58-4b6d-b514-17e7897d9640","invitecode":"a0ee9bd4bc42","name":"jeux","owner":"2490c537-f28e-4312-9349-8387a3d9999b"}]
+[00:01:47.468] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:47.594] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:50.275] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:50.402] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:52.308] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:52.430] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:54.029] Browser ERROR   A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://react.dev/link/controlled-components
+[00:01:57.870] Browser LOG     TOKEN SAUVÉ: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI0OTBjNTM3LWYyOGUtNDMxMi05MzQ5LTgzODdhM2Q5OTk5YiIsIm1haWwiOiJhIiwibmFtZSI6ImEiLCJpYXQiOjE3NzMwNDc5ODIsImV4cCI6MTc3MzA2OTU4Mn0.9XLUAO5iaSWizWxBnJ8n2Z25mEAvxDCK4tN3jqvW_Ow
+[00:01:58.084] Browser LOG     Serveurs récupérés : [{"id":"f0cbb71a-20e7-4ce2-bd43-370f7891a58e","invitecode":"ba75a8ab20c0","name":"travail","owner":"2490c537-f28e-4312-9349-8387a3d9999b"},{"id":"8ce7978a-2f58-4b6d-b514-17e7897d9640","invitecode":"a0ee9bd4bc42","name":"jeux","owner":"2490c537-f28e-4312-9349-8387a3d9999b"}]
+[00:01:58.084] Browser LOG     Serveurs récupérés : [{"id":"f0cbb71a-20e7-4ce2-bd43-370f7891a58e","invitecode":"ba75a8ab20c0","name":"travail","owner":"2490c537-f28e-4312-9349-8387a3d9999b"},{"id":"8ce7978a-2f58-4b6d-b514-17e7897d9640","invitecode":"a0ee9bd4bc42","name":"jeux","owner":"2490c537-f28e-4312-9349-8387a3d9999b"}]
+[00:02:21.376] Server  LOG     serverId: "f0cbb71a-20e7-4ce2-bd43-370f7891a58e"
+[00:02:21.713] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:02:21.911] Browser WARN    Image with src "/logo-icon.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:02:21.911] Browser LOG     serverId: f0cbb71a-20e7-4ce2-bd43-370f7891a58e
+[00:14:23.163] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/app/app'
+[00:14:23.183] Server  ERROR   ⨯ "unhandledRejection:" Error: ENOENT: no such file or directory, scandir '/app/app'
+[00:14:23.189] Server  ERROR   ⨯ "unhandledRejection: " Error: ENOENT: no such file or directory, scandir '/app/app'
+[00:14:23.364] Server  ERROR   ⨯ PageNotFoundError: Cannot find module for page: route not found /_not-found/page
+[00:14:23.407] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/app/app'
+[00:14:23.410] Server  ERROR   Error: ENOENT: no such file or directory, scandir '/app/app'
+[00:14:24.959] Server  LOG     ✓ Compiled in 2.1s
