@@ -1,68 +1,36 @@
-# Projet RTC
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Le but de ce projet était de découvrir et mettre en place une application de **communication en temps réel (RTC)**, en combinant une **API backend**, une **base de données PostgreSQL**, et un **front-end moderne**, tout en respectant une architecture claire et modulaire.
+## Getting Started
 
-Le projet permet :
-- l’authentification des utilisateurs via **JWT**
-- la récupération des informations utilisateurs depuis **PostgreSQL**
-- la communication en temps réel avec **Socket.IO**
-- la gestion de **rooms via socket.io**
-- l’affichage du **nom de l’expéditeur** pour chaque message
-- une séparation claire entre **front**, **back** et **db**
+First, run the development server:
 
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Technologies utilisées
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [HTML5](https://www.w3schools.com/html/default.asp)
-- [CSS3](https://www.w3schools.com/css/default.asp)
-- [Node.js](https://www.w3schools.com/nodejs/)
-- [Express.js](https://expressjs.com/)
-- [Socket.IO](https://socket.io/docs/v4/)
-- [PostgreSQL](https://www.postgresql.org/docs/)
-- [PGAdmin4](https://www.pgadmin.org/docs/)
-- [JWT (JSON Web Token)](https://jwt.io/introduction)
-- [Docker](https://www.w3schools.in/docker/intro)
-- [Next.js](https://nextjs.org/docs)
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Fonctionnalités principales
+## Learn More
 
-- Authentification utilisateur (JWT)
-- Connexion sécurisée des sockets via token
-- Création et gestion de rooms Socket.IO
-- Envoi de messages ciblés par room
-- Affichage du nom  de l’utilisateur connecté
-- Architecture prête pour la création de “serveurs” (style Discord)
-- Communication temps réel sans rechargement de page
+To learn more about Next.js, take a look at the following resources:
 
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Architecture du projet
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- **Front-end** : Next.js (port 3000)
-- **Back-end** : Express + Socket.IO (port 3001)
-- **Base de données** : PostgreSQL
-- **Admin DB** : PGAdmin
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Déploiement
-
-À la racine du projet, avec docker desktop ready :
-
-docker compose build
-
-docker compose up
-
-
-## Acccès aux services
-
-Front-end (application): http://localhost:3000
-
-Back-end (API + Socket.IO): http://localhost:3001
-
-PGAdmin (administration DB): http://localhost:5050
-
-## Auteurs
-[Viemont_Augustin](https://github.com/Augustin734)
-[Perles_Olysse](https://github.com/S6leak)
-[Viscione_Clyde](https://github.com/ClydeViscione)
-[Clerc_Lois](https://github.com/LaFicelleCmoi)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
