@@ -1,0 +1,145 @@
+/* CHANNEL LIST */
+.channel-container {
+  width: 240px;
+  height: 100vh;
+  background: #1f1f28;
+  border-right: 2px solid #25252b;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  gap: 10px;
+  color: #dcddde;
+}
+
+/* CHANNEL HEADER */
+.channel-header {
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #25252b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+/* CHANNEL ITEM */
+.channel-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.channel-item:hover {
+  background: #45f3ff33;
+  box-shadow: 0 0 10px #45f3ff66;
+  transform: scale(1.02);
+}
+
+.channel-item span {
+  margin-left: 8px;
+  font-weight: 500;
+  color: #dcddde;
+}
+
+/* AVATAR */
+.channel-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #25252b;
+}
+
+/* CREATE CHANNEL BUTTON */
+.create-channel {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-style: italic;
+  color: #45f3ff;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: 0.3s;
+  border: 2px solid transparent;
+}
+
+.create-channel:hover {
+  border-color: #45f3ff;
+  box-shadow: 0 0 10px #45f3ff;
+  transform: scale(1.05);
+}
+
+/* CHANNEL MODAL */
+.channel-modal {
+  position: relative;
+  width: 400px;
+  padding: 40px;
+  border-radius: 20px;
+  background: #2d2d39;
+  border: 6px solid #25252b;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+}
+
+/* modal input */
+.channel-modal input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid white;
+  background: #0000001a;
+  color: white;
+}
+
+.channel-modal input:focus {
+  border-color: #45f3ff;
+  box-shadow: 0 0 10px #45f3ff33;
+  outline: none;
+}
+
+/* modal buttons */
+.channel-modal .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.channel-modal .create-btn {
+  background: #45f3ff;
+  color: #111;
+  border-radius: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.channel-modal .create-btn:hover {
+  box-shadow: 0 0 10px #45f3ff, 0 0 40px #45f3ff;
+}
+
+.channel-modal .cancel-btn {
+  background: #ff2770;
+  color: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.channel-modal .cancel-btn:hover {
+  box-shadow: 0 0 10px #ff2770, 0 0 40px #ff2770;
+}
+
+/* modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}

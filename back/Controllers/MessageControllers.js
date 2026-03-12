@@ -24,7 +24,12 @@ export const getMessagesByChannel = async (req, res, next) => {
 
     res.status(200).json({
       message: "Messages récupérés avec succès",
-      data: messages
+      data: messages.map(m => ({
+        _id: m._id,
+        channelId: m.channelId,
+        content: m.content,
+        sender: m.userId?.first_name || m.userId?.name || 'Utilisateur' // nom réel
+      }))
     });
   } catch (error) {
     next(error);

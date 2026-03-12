@@ -51,7 +51,7 @@ Content-Type: application/json
 ### CREATE SERVER
 #################################################
 POST http://localhost:3001/servers
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjcyOGE1OThkLWQ5NWEtNDBlYi04OGZhLTUwMWUyOTNhZWYwYSIsIm1haWwiOiJqZWFuLmR1cG9udEB0ZXN0LmNvbSIsIm5hbWUiOiJEdXBvbnQiLCJpYXQiOjE3NzI3NTA1MjMsImV4cCI6MTc3Mjc3MjEyM30.ykTIcYeTljKBwPZF-r4p9Mw0MMyc_p1_FyCw9S3LKTI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNiZTY1YzUxLTFlZGYtNGMwMC1hZDBhLTAxZmIwNThjNTVkYyIsIm1haWwiOiJqZWFuLmR1cG9udEB0ZXN0LmNvbSIsIm5hbWUiOiJEdXBvbnQiLCJpYXQiOjE3NzMxNTgzNTgsImV4cCI6MTc3MzE3OTk1OH0.s_yHycXNExuhPRoIAKrxJgrWCmdGnuRM6PGs1TWa2jw
 
 {
   "name": "Mon serveur test"
@@ -90,7 +90,7 @@ Content-Type: application/json
 ### GET ALL SERVERS WHERE USER IS MEMBER
 #################################################
 GET http://localhost:3001/servers/members
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNiZTY1YzUxLTFlZGYtNGMwMC1hZDBhLTAxZmIwNThjNTVkYyIsIm1haWwiOiJqZWFuLmR1cG9udEB0ZXN0LmNvbSIsIm5hbWUiOiJEdXBvbnQiLCJpYXQiOjE3NzMxNTgzNTgsImV4cCI6MTc3MzE3OTk1OH0.s_yHycXNExuhPRoIAKrxJgrWCmdGnuRM6PGs1TWa2jw
 
 #################################################
 ### GET ALL USERS IN A SERVER

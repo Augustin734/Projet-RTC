@@ -1,0 +1,180 @@
+/* SERVER LIST */
+
+.server-list {
+  width: 80px;
+  height: 100vh;
+  background: #111;
+  border-right: 2px solid #25252b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+  gap: 15px;
+}
+
+/* SERVER ICON */
+
+.server-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #25252b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+  border: 2px solid transparent;
+}
+
+.server-icon:hover {
+  border-color: #45f3ff;
+  box-shadow: 0 0 10px #45f3ff;
+  transform: scale(1.1);
+}
+
+/* ADD SERVER BUTTON */
+
+.add-server {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #25252b;
+  color: #45f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid #45f3ff;
+}
+
+.add-server:hover {
+  background: #45f3ff;
+  color: #111;
+  box-shadow: 0 0 20px #45f3ff;
+}
+
+/* MODAL */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+/* reuse employer-section look */
+
+.server-modal {
+  position: relative;
+  width: 400px;
+  padding: 40px;
+  border-radius: 20px;
+  background: #2d2d39;
+  border: 6px solid #25252b;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+}
+
+/* title */
+
+.server-modal h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px #ff2770;
+}
+
+/* input */
+
+.server-modal input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid white;
+  background: #0000001a;
+  color: white;
+}
+
+.server-modal input:focus {
+  border-color: #45f3ff;
+  box-shadow: 0 0 10px #45f3ff33;
+  outline: none;
+}
+
+/* buttons */
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* create button */
+
+.create-btn {
+  background: #45f3ff;
+  color: #111;
+}
+
+.create-btn:hover {
+  box-shadow: 0 0 10px #45f3ff, 0 0 40px #45f3ff;
+}
+
+/* cancel button */
+
+.cancel-btn {
+  background: #ff2770;
+  color: white;
+}
+
+.cancel-btn:hover {
+  box-shadow: 0 0 10px #ff2770, 0 0 40px #ff2770;
+}
+
+/* TABS */
+
+.modal-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 30px;
+  border: 2px solid #45f3ff;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab:hover {
+  box-shadow: 0 0 10px #45f3ff;
+}
+
+.tab.active {
+  background: #45f3ff;
+  color: #111;
+  box-shadow: 0 0 20px #45f3ff;
+}

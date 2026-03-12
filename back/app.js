@@ -76,7 +76,6 @@ pool.connect()
 
         await socket.join(room);
 
-        socket.emit('system', `Tu as rejoint le channel ${room}`);
         socket.to(room).emit('system', `${displayName} a rejoint le channel`);
 
         await updateUsers(room);
@@ -91,7 +90,6 @@ pool.connect()
 
         if (socket.data.channelId === room) socket.data.channelId = null;
 
-        socket.emit('system', `Tu as quitté le channel ${room}`);
         socket.to(room).emit('system', `${displayName} a quitté le channel`);
 
         await updateUsers(room);
