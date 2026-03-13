@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///app/pages/_app.js"],"sourcesContent":["import '../style/signup.css';\nimport \"../style/serverUI.css\";\nimport '../style/channelUI.css';\nimport '../style/chatUI.css';\n\nexport default function App({ Component, pageProps }) {\n  return <Component {...pageProps} />;\n}"],"names":[],"mappings":";;;;;;;;;;AAKe,SAAS,IAAI,EAAE,SAAS,EAAE,SAAS,EAAE;IAClD,qBAAO,qKAAC;QAAW,GAAG,SAAS;;;;;;AACjC"}}]
+}

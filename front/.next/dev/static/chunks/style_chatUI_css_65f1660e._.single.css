@@ -1,0 +1,148 @@
+/* [project]/style/chatUI.css [client] (css) */
+.chat-container {
+  color: #dcddde;
+  background: #1a1a22;
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+}
+
+.topbar {
+  background: #1f1f28;
+  border-bottom: 2px solid #25252b;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  position: relative;
+}
+
+.topbar h2 {
+  letter-spacing: 1px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.topbar span {
+  color: #45f3ff;
+  text-shadow: 0 0 8px #45f3ff;
+}
+
+.chat-area {
+  flex-direction: column;
+  flex: 1;
+  gap: 15px;
+  padding: 20px;
+  display: flex;
+  overflow-y: auto;
+}
+
+.chat-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+  background: #45f3ff;
+  border-radius: 10px;
+}
+
+.chat-area::-webkit-scrollbar-track {
+  background: none;
+}
+
+.message {
+  border-radius: 12px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  transition: all .25s;
+  display: flex;
+}
+
+.message:hover {
+  background: #45f3ff10;
+  transform: translateX(3px);
+  box-shadow: 0 0 8px #45f3ff22;
+}
+
+.message-avatar {
+  color: #111;
+  background: linear-gradient(135deg, #45f3ff, #ff2770);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+}
+
+.message-content {
+  flex-direction: column;
+  gap: 3px;
+  display: flex;
+}
+
+.message-username {
+  color: #45f3ff;
+  text-shadow: 0 0 6px #45f3ff33;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.message-text {
+  color: #dcddde;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.system {
+  text-align: center;
+  color: #999;
+  width: 100%;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.typing {
+  color: #45f3ff;
+  text-shadow: 0 0 5px #45f3ff33;
+  margin-left: 50px;
+  font-size: 13px;
+}
+
+.users {
+  color: #aaa;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.message-input-container {
+  background: #1f1f28;
+  border-top: 2px solid #25252b;
+  padding: 15px;
+}
+
+.message-input {
+  color: #fff;
+  background: #111;
+  border: 2px solid #25252b;
+  border-radius: 30px;
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 14px;
+  transition: all .3s;
+}
+
+.message-input::placeholder {
+  color: #777;
+}
+
+.message-input:focus {
+  border-color: #45f3ff;
+  outline: none;
+  box-shadow: 0 0 10px #45f3ff33;
+}
+
+/*# sourceMappingURL=style_chatUI_css_65f1660e._.single.css.map*/

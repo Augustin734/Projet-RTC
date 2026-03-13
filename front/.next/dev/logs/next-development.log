@@ -1,0 +1,19 @@
+[00:00:01.302] Server  LOG     
+[00:00:01.302] Server  LOG       We detected TypeScript in your project and reconfigured your tsconfig.json file for you.
+[00:00:01.302] Server  LOG       The following mandatory changes were made to your tsconfig.json:
+
+[00:00:01.302] Server  LOG       	- jsx was set to react-jsx (next.js uses the React automatic runtime)
+[00:00:01.302] Server  LOG     
+[00:00:01.474] Server  LOG     ✓ Ready in 1087ms
+[00:00:28.602] Browser ERROR   {}
+[00:01:20.142] Browser LOG     TOKEN SAUVÉ: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjFkZTk0NjRhLTlhOTQtNGI3NC1iMDZmLWYyMjkxZDk5ODM1NCIsIm1haWwiOiJtYXhpbWUudGVzdEBnbWFpbC5jb20iLCJuYW1lIjoiTWF4aW1lIiwiaWF0IjoxNzczMzQyMTI5LCJleHAiOjE3NzMzNjM3Mjl9.MpycAQTt0_vJ4VLbhGK48rQ1BLkOkbodQsknfDSgoNk
+[00:01:40.032] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `div`.  It was passed a child from ServerList.
+[00:01:41.382] Browser LOG     Server sélectionné: undefined
+[00:01:42.980] Browser LOG     Server sélectionné: J'aime les zizi
+[00:01:52.093] Browser ERROR   Each child in a list should have a unique "key" prop.%s%s See https://react.dev/link/warning-keys for more information. 
+
+Check the render method of `div`.  It was passed a child from ChannelList.
+[00:01:54.894] Browser LOG     Server sélectionné: J'aime les zizi
+[00:05:46.496] Browser LOG     Server sélectionné: J'aime les zizi

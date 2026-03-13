@@ -1,0 +1,244 @@
+/* [project]/style/signup.css [client] (css) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  background: #0c0c0c;
+  min-height: 100vh;
+}
+
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.signup-container {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  position: relative;
+}
+
+.formation-link {
+  color: #fff;
+  z-index: 2000;
+  background: #25252b;
+  border: 2px solid #45f3ff;
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .3s;
+  position: fixed;
+}
+
+.formation-link:hover {
+  color: #111;
+  background: #45f3ff;
+  box-shadow: 0 0 20px #45f3ff;
+}
+
+.back-link {
+  top: 20px;
+  left: 20px;
+}
+
+.home-link {
+  border-color: #ff2770;
+  bottom: 20px;
+  right: 20px;
+}
+
+.home-link:hover {
+  background: #ff2770;
+  box-shadow: 0 0 20px #ff2770;
+}
+
+.employer-section {
+  background: repeating-conic-gradient(from var(--a), #ff2770 0%, #ff2770 5%, transparent 5%, transparent 40%, #ff2770 50%);
+  filter: drop-shadow(0 15px 50px #000);
+  border-radius: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  min-height: 500px;
+  padding: 50px 40px;
+  transition: all .5s;
+  animation: 10s linear infinite rotating;
+  display: flex;
+  position: relative;
+}
+
+@keyframes rotating {
+  0% {
+    --a: 0deg;
+  }
+
+  100% {
+    --a: 360deg;
+  }
+}
+
+.employer-section:before {
+  content: "";
+  background: repeating-conic-gradient(from var(--a), #45f3ff 0%, #45f3ff 5%, transparent 5%, transparent 40%, #45f3ff 50%);
+  filter: drop-shadow(0 15px 50px #000);
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  animation: 10s linear -1s infinite rotating;
+  position: absolute;
+}
+
+.employer-section:after {
+  content: "";
+  z-index: 1;
+  background: #2d2d39;
+  border: 8px solid #25252b;
+  border-radius: 15px;
+  position: absolute;
+  inset: 4px;
+}
+
+.employer-section h1, .employer-section .fonction-label, .employer-section form {
+  z-index: 1000;
+  position: relative;
+}
+
+.employer-section h1 {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  text-shadow: 0 0 10px #ff2770;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.fonction-label {
+  color: #45f3ff;
+  text-shadow: 0 0 5px #45f3ff;
+  margin-bottom: 20px;
+  font-weight: 500;
+  display: block;
+}
+
+#formAnnonce {
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  display: flex;
+}
+
+.form-group {
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  display: flex;
+}
+
+.form-group label {
+  color: #fff;
+  font-size: .9em;
+  font-weight: 400;
+}
+
+.form-group input {
+  color: #fff;
+  background: #0000001a;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  outline: none;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1em;
+  transition: all .3s;
+}
+
+.form-group input:focus {
+  border-color: #45f3ff;
+  box-shadow: 0 0 10px #45f3ff33;
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+#formAnnonce button[type="submit"] {
+  color: #111;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #45f3ff;
+  border: none;
+  border-radius: 30px;
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: 500;
+  transition: all .3s;
+}
+
+#formAnnonce button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px #45f3ff, 0 0 40px #45f3ff;
+}
+
+#formAnnonce button[type="submit"]:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+  background: #999;
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 80px 20px;
+  }
+
+  .employer-section {
+    width: 100%;
+    max-width: 400px;
+    min-height: auto;
+    padding: 40px 30px;
+  }
+
+  .formation-link {
+    padding: 10px 20px;
+    font-size: .9em;
+  }
+
+  .back-link {
+    top: 10px;
+    left: 10px;
+  }
+
+  .home-link {
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .employer-section {
+    padding: 30px 20px;
+  }
+
+  .employer-section h1 {
+    font-size: 1.5em;
+  }
+
+  .form-group input, #formAnnonce button[type="submit"] {
+    padding: 10px 15px;
+    font-size: .9em;
+  }
+}
+
+/*# sourceMappingURL=style_signup_css_65f1660e._.single.css.map*/
